@@ -4,6 +4,7 @@
  */
 package tn.esprit.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
@@ -20,11 +21,21 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.services.EvenementServices;
 
@@ -66,6 +77,8 @@ public class ListEventController implements Initializable {
     
     
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    @FXML
+    private TextField filterField;
 
 
     /**
@@ -73,7 +86,11 @@ public class ListEventController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        xnom_even.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom_even()));
+       table();
+        
+    }  
+    public void table(){
+     xnom_even.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom_even()));
         xdesc_event.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDesc_event()));
         xcategorie_even.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCategorie_even()));
 //        xdate.setCellValueFactory(cellData -> {
@@ -133,8 +150,7 @@ public class ListEventController implements Initializable {
 		     });
 		        return myRow;
                    });
-        
-    }  
+    }
     @FXML
     private void supprimer(ActionEvent event) {
        EvenementServices crud = new EvenementServices();
@@ -145,6 +161,8 @@ public class ListEventController implements Initializable {
         crud.supprimerEvenement(id);
         xtable.getItems().remove(Evenement);
     }}
+     
+ 
     @FXML
     private void modifier_User(ActionEvent event) {
          EvenementServices crud = new EvenementServices();
@@ -170,6 +188,33 @@ public class ListEventController implements Initializable {
             
             crud.modifierEvenement( id, nb_part, nom_even, desc_event, categorie_even, image_even,t );
             
+    }
+      @FXML
+    private void filter(KeyEvent event) {
+        EvenementServices crud = new EvenementServices();
+         ObservableList<Evenements> filteredPeople = FXCollections.observableArrayList(crud.afficher());
+        //    ObservableList<Person> filteredPeople = people.filtered(p -> p.getAge() >= 30 && p.getAge() < 40);  
+
+        ObservableList<Evenements> newdata = filteredPeople.stream()
+                .filter(n -> n.getNom_even().toLowerCase().contains(filterField.getText().toLowerCase())
+                || n.getDesc_event().toLowerCase().equals(filterField.getText())
+                || n.getDesc_event().toLowerCase().contains(filterField.getText())
+                || n.getNom_even().toLowerCase().contains(filterField.getText().toLowerCase())
+                || n.getNom_even().toLowerCase().equals(filterField.getText()))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        xtable.setItems(newdata);
+    }
+      @FXML
+    private void participer(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Interface_client.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+//                stage.setFullScreen(true);
+                stage.show();
+
     }
     
 }

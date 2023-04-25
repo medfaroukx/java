@@ -5,33 +5,91 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ListEventController">
+<AnchorPane id="AnchorPane" prefHeight="615.0" prefWidth="827.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ListEventController">
      <children>
-      <TableView layoutX="26.0" layoutY="78.0" prefHeight="200.0" prefWidth="569.0" fx:id="xtable">
+      <TableView layoutX="252.0" layoutY="80.0" prefHeight="200.0" prefWidth="537.0" fx:id="xtable">
         <columns>
           <TableColumn prefWidth="107.5" text="Nom Evenement" fx:id="xnom_even" />
           <TableColumn prefWidth="82.5" text="Description" fx:id="xdesc_event" />
             <TableColumn prefWidth="111.0" text="Categorie" fx:id="xcategorie_even" />
             <TableColumn prefWidth="65.0" text="Date" fx:id="xdate" />
             <TableColumn prefWidth="70.0" text="Image" fx:id="ximage_even" />
-            <TableColumn prefWidth="239.5" text="nbre de pati" fx:id="xnb_part" />
+            <TableColumn prefWidth="130.5" text="nbre de pati" fx:id="xnb_part" />
         </columns>
       </TableView>
-      <Button layoutX="78.0" layoutY="312.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #3c94d1;" text="supprimer" textFill="#f2f2f2" />
-      <TextField fx:id="Mnom" layoutX="264.0" layoutY="300.0" />
-      <TextField fx:id="Mdescription" layoutX="264.0" layoutY="338.0" />
-      <TextField fx:id="Mcategorie" layoutX="264.0" layoutY="377.0" />
-      <TextField fx:id="Mdate" layoutX="264.0" layoutY="418.0" />
-      <TextField fx:id="Mimage" layoutX="264.0" layoutY="456.0" />
-      <Label layoutX="167.0" layoutY="304.0" prefHeight="17.0" prefWidth="148.0" text="Nom Evenement" />
-      <Button layoutX="458.0" layoutY="509.0" mnemonicParsing="false" onAction="#modifier_User" style="-fx-background-color: #3c94d1;" text="modifier" textFill="#f2f2f2" />
-      <Label layoutX="169.0" layoutY="342.0" prefHeight="17.0" prefWidth="109.0" text="Description" />
-      <Label layoutX="168.0" layoutY="381.0" prefHeight="17.0" prefWidth="92.0" text="Categorie" />
-      <Label layoutX="172.0" layoutY="423.0" prefHeight="17.0" prefWidth="72.0" text="Date" />
-      <Label layoutX="172.0" layoutY="461.0" prefHeight="17.0" prefWidth="84.0" text="Image" />
-      <Label layoutX="172.0" layoutY="494.0" prefHeight="17.0" prefWidth="84.0" text="nombre part" />
-      <TextField fx:id="MnbPart" layoutX="264.0" layoutY="489.0" />
+      <Button layoutX="591.0" layoutY="576.0" mnemonicParsing="false" onAction="#supprimer" style="-fx-background-color: #3c94d1;" text="supprimer" textFill="#f2f2f2" />
+      <TextField fx:id="Mnom" layoutX="467.0" layoutY="308.0" />
+      <TextField fx:id="Mdescription" layoutX="467.0" layoutY="346.0" />
+      <TextField fx:id="Mcategorie" layoutX="467.0" layoutY="385.0" />
+      <TextField fx:id="Mdate" layoutX="467.0" layoutY="427.0" />
+      <TextField fx:id="Mimage" layoutX="467.0" layoutY="469.0" />
+      <Label layoutX="306.0" layoutY="313.0" prefHeight="17.0" prefWidth="148.0" text="Nom Evenement" textFill="#f2eeee" />
+      <Button layoutX="467.0" layoutY="576.0" mnemonicParsing="false" onAction="#modifier_User" style="-fx-background-color: #3c94d1;" text="modifier" textFill="#f2f2f2" />
+      <Label layoutX="306.0" layoutY="351.0" prefHeight="17.0" prefWidth="109.0" text="Description" textFill="#f2eeee" />
+      <Label layoutX="306.0" layoutY="390.0" prefHeight="17.0" prefWidth="92.0" text="Categorie" textFill="#f2eeee" />
+      <Label layoutX="306.0" layoutY="432.0" prefHeight="17.0" prefWidth="72.0" text="Date" textFill="#f2eeee" />
+      <Label layoutX="310.0" layoutY="474.0" prefHeight="17.0" prefWidth="84.0" text="Image" textFill="#f2eeee" />
+      <Label layoutX="310.0" layoutY="516.0" prefHeight="17.0" prefWidth="84.0" text="Nombre part" textFill="#f2eeee" />
+      <TextField fx:id="MnbPart" layoutX="467.0" layoutY="511.0" />
+      <HBox layoutY="-6.0" prefHeight="56.0" prefWidth="827.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <ImageView fitHeight="227.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ressource/logo1.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="58.0" prefWidth="439.0">
+               <children>
+                  <TextField fx:id="filterField" alignment="TOP_CENTER" layoutX="408.0" layoutY="16.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#filter" onKeyReleased="#filter" onKeyTyped="#filter" prefHeight="26.0" prefWidth="142.0" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+      <VBox layoutY="51.0" prefHeight="564.0" prefWidth="223.0" style="-fx-background-color: #D7EDF2;">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Blog">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/blog.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Produits">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/traits.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#participer" prefHeight="86.0" prefWidth="224.0" text="Evenements">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/un-evenement.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="10.0" layoutY="182.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Panier">
+               <graphic>
+                  <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/panier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></VBox>
    </children>
 </AnchorPane>

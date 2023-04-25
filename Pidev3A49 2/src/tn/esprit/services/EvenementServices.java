@@ -84,6 +84,17 @@ public class EvenementServices {
             System.out.println(ex.getMessage());
         }
     }
+          public void participer(int id ) {
+        try {
+            String req = "UPDATE `evenements` SET `nb_part` = `nb_part` - 1 WHERE `evenements`.`id` = " + id;
+
+            Statement st = cnx.createStatement();
+            st.executeUpdate(req);
+            System.out.println("event updated !");
+        }catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
         public List<Evenements> afficher() {
         List<Evenements> Evenements = new ArrayList<>();
         String sql="select * from evenements";
