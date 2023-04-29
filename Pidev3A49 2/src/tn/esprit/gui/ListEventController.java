@@ -35,6 +35,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableRow;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.services.EvenementServices;
@@ -215,6 +216,28 @@ public class ListEventController implements Initializable {
 //                stage.setFullScreen(true);
                 stage.show();
 
+    }
+     @FXML
+    private void stat(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Stats.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+//                stage.setFullScreen(true);
+                stage.show();
+
+    }
+
+    @FXML
+    private void gotoaccueil(ActionEvent event) throws IOException {
+           FXMLLoader loader = new FXMLLoader(getClass().getResource("Accueil.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+//                stage.setFullScreen(true);
+                stage.show();
     }
     
 }

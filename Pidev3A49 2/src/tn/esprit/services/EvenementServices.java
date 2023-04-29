@@ -121,6 +121,24 @@ public class EvenementServices {
       
         return Evenements;
     }
+        public int nbEncours(){
+     String req="SELECT COUNT(*) FROM evenements  ";
+      
+      int nb =0;
+        
+        try {
+        	Statement stm = MaConnection.getInstance().getCnx().createStatement();
+            ResultSet rs = stm.executeQuery(req);
+            while(rs.next()){
+             nb= rs.getInt(1);
+              System.out.println(nb);
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return nb;
+    }
 
          
 }

@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="615.0" prefWidth="827.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ListEventController">
      <children>
@@ -40,28 +41,41 @@
       <TextField fx:id="MnbPart" layoutX="467.0" layoutY="511.0" />
       <HBox layoutY="-6.0" prefHeight="56.0" prefWidth="827.0" style="-fx-background-color: #D7EDF2;">
          <children>
-            <ImageView fitHeight="227.0" fitWidth="223.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@ressource/logo1.png" />
-               </image>
-            </ImageView>
-            <Pane prefHeight="58.0" prefWidth="439.0">
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="67.0" fitWidth="233.0" layoutX="-12.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="acceuil" layoutX="3.0" layoutY="7.0" mnemonicParsing="false" onAction="#gotoaccueil" opacity="0.0" prefHeight="56.0" prefWidth="219.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="56.0" prefWidth="410.0">
                <children>
                   <TextField fx:id="filterField" alignment="TOP_CENTER" layoutX="408.0" layoutY="16.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#filter" onKeyReleased="#filter" onKeyTyped="#filter" prefHeight="26.0" prefWidth="142.0" />
+                  <ImageView fitHeight="23.0" fitWidth="22.0" layoutX="414.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/loupe.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
       </HBox>
       <VBox layoutY="51.0" prefHeight="564.0" prefWidth="223.0" style="-fx-background-color: #D7EDF2;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Blog">
+            <Button mnemonicParsing="false" onAction="#stat" prefHeight="86.0" prefWidth="224.0" text="Stats">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@ressource/blog.png" />
+                        <Image url="@ressource/diagramme-circulaire.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="31.0" />
+               </font>
             </Button>
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Produits">
                <graphic>
@@ -71,6 +85,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="31.0" />
+               </font>
             </Button>
             <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" onAction="#participer" prefHeight="86.0" prefWidth="224.0" text="Evenements">
                <graphic>
@@ -80,6 +97,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="24.0" />
+               </font>
             </Button>
             <Button layoutX="10.0" layoutY="182.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="224.0" text="Panier">
                <graphic>
@@ -89,6 +109,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Academy Engraved LET Plain:1.0" size="30.0" />
+               </font>
             </Button>
          </children></VBox>
    </children>

@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="719.0" style="-fx-background-color: #3A8090;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.Interface_clientController">
@@ -52,11 +53,16 @@
          </children></VBox>
       <HBox layoutY="-5.0" prefHeight="50.0" prefWidth="719.0" style="-fx-background-color: #D7EDF2;">
          <children>
-            <ImageView fitHeight="65.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@ressource/logo1.png" />
-               </image>
-            </ImageView>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="65.0" fitWidth="200.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@ressource/logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="-1.0" layoutY="2.0" mnemonicParsing="false" onAction="#gotoacceuil" opacity="0.0" prefHeight="50.0" prefWidth="200.0" text="Button" />
+               </children>
+            </Pane>
          </children>
       </HBox>
       <Button layoutX="431.0" layoutY="406.0" mnemonicParsing="false" onAction="#Participer" text="Participer" />
